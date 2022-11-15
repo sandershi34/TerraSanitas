@@ -35,6 +35,13 @@ export const init = async() => {
         isInitialized = true;
 }
 
+export const getUsers = async() =>{
+    if( !isInitialized ){
+        await init();
+    }
+    tsContract.methods.viewParticipants().send({from:selectedAccount})
+}
+
 export const registerUser = async() =>{
     if( !isInitialized ){
         await init();
