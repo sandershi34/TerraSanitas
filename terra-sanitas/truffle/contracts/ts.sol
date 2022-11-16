@@ -7,15 +7,9 @@ contract terraSanitas {
     }
     //event
     event ValidUser(address user);
-    address owner;
     mapping(address => Participant) participants; 
     address[] public participantslist;
     // modifiers
-
-    modifier onlyOwner() 
-     {require(msg.sender == owner);
-      _;
-     }
     
     modifier validParticipant(){
         require(participants[msg.sender].validUser, "Not a Registered Participant");
@@ -24,8 +18,7 @@ contract terraSanitas {
     
     //address participant
 
-    function register() public{
-        //require(msg.sender == owner,"no permission to add user");
+    function register() public{2
         participants[msg.sender] = Participant(true);
         participantslist.push(msg.sender);
     }

@@ -35,16 +35,36 @@ export const init = async() => {
         isInitialized = true;
 }
 
-export const getUsers = async() =>{
+export const GetUsers = async() =>{
     if( !isInitialized ){
         await init();
     }
-    tsContract.methods.viewParticipants().send({from:selectedAccount})
+    //await tsContract.methods.viewParticipants().send({from:selectedAccount})
+    return await tsContract.methods.viewParticipants().send({from:selectedAccount})
 }
 
-export const registerUser = async() =>{
+export const RegisterUser = async() =>{
     if( !isInitialized ){
         await init();
     }
-    tsContract.methods.register().send({from:selectedAccount})
+    return await tsContract.methods.register().send({from:selectedAccount})
+}
+export const DeregisterUser = async() =>{
+    if( !isInitialized ){
+        await init();
+    }
+    return await tsContract.methods.deregister().send({from:selectedAccount})
+}
+export const UploadInfo = async() =>{
+    if( !isInitialized ){
+        await init();
+    }
+    return await tsContract.methods.upload().send({from:selectedAccount})
+}
+
+export const RequestInfo = async() =>{
+    if( !isInitialized ){
+        await init();
+    }
+    return await tsContract.methods.request().send({from:selectedAccount})
 }
