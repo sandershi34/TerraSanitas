@@ -18,7 +18,7 @@ contract terraSanitas {
     
     //address participant
 
-    function register() public{2
+    function register() public{
         participants[msg.sender] = Participant(true);
         participantslist.push(msg.sender);
     }
