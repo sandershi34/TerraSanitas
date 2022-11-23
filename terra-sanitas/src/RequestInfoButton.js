@@ -15,7 +15,7 @@ function RequestInfoButton() {
 
     return (
     <div className='deregister'>
-        <button onClick={()=> Request()}> Request </button>
+        <button onClick={()=> Request()}> RequestInfo </button>
     </div>);
 }
 

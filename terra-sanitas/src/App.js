@@ -15,15 +15,12 @@ function App() {
         <DeregisterButton />
       </div>
       <div className="block">
-        <h4>Request User List</h4>
-        <ViewUsersButton />
-      </div>
-      <div className="block">
-        <h4>Request User Info</h4>
+        <h4>Request Patient Info</h4>
         <RequestInfoButton />
+        <ViewUsersButton></ViewUsersButton>
       </div>
       <div className="block">
-        <h4>Upload Info</h4>
+        <h4>Upload Patient Info</h4>
         <div>
           <input className="choosefile" id="image-file" type="file" />
         </div>
