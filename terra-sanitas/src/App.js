@@ -1,4 +1,5 @@
 import React from "react";
+import CreateRecord from "./components/CreateRecord";
 import Registerbutton from "./Registerbutton";
 import DeregisterButton from "./DeregisterButton";
 import UploadButton from "./Uploadbutton";
@@ -7,7 +8,9 @@ import RequestInfoButton from "./RequestInfoButton";
 
 function App() {
   return (
-    <div className="App">
+    <CreateRecord />
+    
+  /*  <div className="App">
       <h1>Terra Sanitas</h1>
       <div className="block">
         <h4>Register/Deregister from Blockchain</h4>
@@ -28,6 +31,7 @@ function App() {
         <UploadButton />
       </div>
     </div>
+  */
   );
 }
 
