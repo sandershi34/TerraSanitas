@@ -19,7 +19,7 @@ function CreateRecord(){
     }
 
     return <div className = 'container'>
-        <h1> Input Health Record</h1>
+        <h2> Input Health Record</h2>
         <form>
             <div className="form-group">
                 <input onChange={handleChange} name = 'patient' value={input.patient} autoComplete="off" className = "form-control" placeholder="name"></input>

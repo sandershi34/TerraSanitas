@@ -8,7 +8,12 @@ import RequestInfoButton from "./RequestInfoButton";
 
 function App() {
   return (
-    <CreateRecord />
+    <div>
+      <h1>Terra Sanitas</h1>
+      <Registerbutton />
+      <CreateRecord />
+    </div>
+
     
   /*  <div className="App">
       <h1>Terra Sanitas</h1>
