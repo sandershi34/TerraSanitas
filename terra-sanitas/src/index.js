@@ -1,10 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
 import App from "./App";
-import reportWebVitals from "./reportWebVitals";
-import RegisterButton from "./components/registerbutton";
-import DeregisterButton from "./components/DeregisterButton";
+//import RegisterButton from "./components/registerbutton";
+//import DeregisterButton from "./components/DeregisterButton";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 //const root1 = ReactDOM.createRoot(document.getElementById('root1'));

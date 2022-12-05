@@ -1,32 +1,38 @@
 import React, { useState } from "react";
 
 function CreateRecord(){ 
-    const [input,setInput] = useState({
+    var state = {
         name: '',
-        date: '',
-        id: null
-    })
+        body: '',
+    }
+    // const [input,setInput] = useState({
+    //     name: '',
+    //     info: '',
+    //     date: '',
+    //     id: null
+    // })
 
-    function handleChange(event){
-        const {name,value} = event.target
+    const handleChange = (event) =>{
+        const target = event.target;
+        const name = target.name;
+        const value = target.value;
+        this.setState = {
+            [name]:value
+        }
+        console.log(this.state)
 
-        setInput(prevInput =>{
-            return{
-                ...prevInput,
-                [name]:value
-            }
-        })
+        
     }
 
     return <div className = 'container'>
         <h2> Input Health Record</h2>
         <form>
             <div className="form-group">
-                <input onChange={handleChange} name = 'patient' value={input.patient} autoComplete="off" className = "form-control" placeholder="name"></input>
+                <input onChange={handleChange} name = 'patient' type ='text' value={this.state.name} autoComplete="off" className = "form-control" placeholder="name"></input>
             </div>
 
             <div className = "form-group">
-                <textarea onChange = {handleChange} name = "healthinfo" value={input.content} autoComplete="off" className="form-control" placeholder="health information"></textarea>
+                <textarea onChange = {handleChange} name = "patientinfo" value={this.state.body} autoComplete="off" className="form-control" placeholder="health information"></textarea>
             </div>
 
             <button className="btn btn-lg btn-info"> Add Patient Info</button>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { RegisterUser} from './Web3Client';
+import { RegisterUser} from '../Web3Client';
 
 function RegisterButton() {
 
