@@ -39,7 +39,6 @@ export const GetUsers = async() =>{
     if( !isInitialized ){
         await init();
     }
-    //await tsContract.methods.viewParticipants().send({from:selectedAccount})
     return await tsContract.methods.viewParticipants().send({from:selectedAccount})
 }
 

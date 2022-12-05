@@ -1,5 +1,6 @@
 import React from "react";
 import axios from 'axios';
+import {RequestInfo} from './Web3Client'
 
 class App extends React.Component{
 
@@ -9,9 +10,7 @@ class App extends React.Component{
     date:{},
     list:[]
 }
-  // componentDidMount = () =>{
-  //   this.getPatientList()
-  // }
+
   list_button = () =>{
     this.getPatientList()
   }
@@ -19,6 +18,15 @@ class App extends React.Component{
 
   }
   getPatientList = () =>{
+      RequestInfo()
+      .then((tx)=>{
+        console.log(tx);
+      })
+      .catch((err)=>{
+          console.log(err);
+      });
+
+
     axios.get('/api')
       .then((res)=>{
         console.log("Data has been received");
@@ -26,7 +34,7 @@ class App extends React.Component{
         this.setState({list:data})
       })
       .catch(()=>{
-        console.log("Data has not been recieved")
+        console.log("Data has not been recieved");
       })
   }
 
@@ -80,7 +88,7 @@ class App extends React.Component{
     
 
   render(){
-   return(   
+   return(
     <div className = 'container'>
       <h2> Input Health Record</h2>
         <form>
