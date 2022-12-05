@@ -1,5 +1,5 @@
 import React from 'react';
-import { UploadInfo} from './Web3Client';
+import { UploadInfo} from '../Web3Client';
 
 function UploadButton() {
 

@@ -1,10 +1,10 @@
 import React from "react";
 import CreateRecord from "./components/CreateRecord";
 import Registerbutton from "./Registerbutton";
-import DeregisterButton from "./DeregisterButton";
-import UploadButton from "./Uploadbutton";
-import ViewUsersButton from "./ViewUsersButton";
-import RequestInfoButton from "./RequestInfoButton";
+import DeregisterButton from "./components/DeregisterButton";
+import UploadButton from "./components/UploadButton";
+import ViewUsersButton from "./components/ViewUsersButton";
+import RequestInfoButton from "./components/RequestInfoButton";
 
 function App() {
   return (

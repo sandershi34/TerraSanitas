@@ -1,5 +1,5 @@
 import React from 'react';
-import { RequestInfo} from './Web3Client';
+import { RequestInfo} from '../Web3Client';
 
 function RequestInfoButton() {
 

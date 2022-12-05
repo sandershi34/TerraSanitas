@@ -1,5 +1,5 @@
 import React from 'react';
-import { DeregisterUser} from './Web3Client';
+import { DeregisterUser} from '../Web3Client';
 
 function DeregisterButton() {
 

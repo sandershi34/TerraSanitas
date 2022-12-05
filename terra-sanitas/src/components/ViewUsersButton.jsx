@@ -1,5 +1,5 @@
 import React from 'react';
-import { GetUsers} from './Web3Client';
+import { GetUsers} from '../Web3Client';
 
 function ViewUsersButton() {
 
