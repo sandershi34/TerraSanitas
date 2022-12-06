@@ -1,5 +1,6 @@
 import Web3 from 'web3';
 import tsContractBuild from 'contracts/terraSanitas.json'
+import app from "./App";
 let selectedAccount;
 let tsContract;
 let isInitialized = false;
@@ -66,5 +67,6 @@ export const RequestInfo = async() =>{
     if( !isInitialized ){
         await init();
     }
-    return await tsContract.methods.request().send({from:selectedAccount})
+    await tsContract.methods.request().send({from:selectedAccount})
+    app.getList();
 }

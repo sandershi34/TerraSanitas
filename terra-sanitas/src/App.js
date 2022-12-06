@@ -1,6 +1,8 @@
 import React from "react";
 import axios from 'axios';
-import {RequestInfo} from './Web3Client'
+import {DeregisterUser, RequestInfo} from './Web3Client'
+import RegisterButton from "./components/Registerbutton";
+import DeregisterButton from "./components/DeregisterButton";
 
 class App extends React.Component{
 
@@ -11,13 +13,14 @@ class App extends React.Component{
     list:[]
 }
 
-  list_button = () =>{
+  list_button = async() =>{
     this.getPatientList()
+    this.displayUserList()
   }
   test = () => {
 
   }
-  getPatientList = () =>{
+  authenicateRequest = () =>{
       RequestInfo()
       .then((tx)=>{
         console.log(tx);
@@ -26,7 +29,9 @@ class App extends React.Component{
           console.log(err);
       });
 
+  }
 
+  getList = () => {
     axios.get('/api')
       .then((res)=>{
         console.log("Data has been received");
@@ -37,7 +42,6 @@ class App extends React.Component{
         console.log("Data has not been recieved");
       })
   }
-
     handleChange = (event) =>{
     const target = event.target;
     const name = target.name;
@@ -90,6 +94,8 @@ class App extends React.Component{
   render(){
    return(
     <div className = 'container'>
+      <RegisterButton />
+      <DeregisterButton />
       <h2> Input Health Record</h2>
         <form>
             <div className="form-group">
