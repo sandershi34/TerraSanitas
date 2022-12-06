@@ -37,7 +37,7 @@ contract terraSanitas {
     function request() public validParticipant{
         require(participants[msg.sender].validUser, "successfully requested");
         // emits user validity to backendcd to give the go ahead to send the files
-        emit ValidUser(msg.sender);
+        //emit ValidUser(msg.sender);
         //calls token smart contract to send payment
     }
 
