@@ -169,6 +169,7 @@
     "content-disposition": "^0.5.4",
     "content-hash": "^2.5.2",
     "content-type": "^1.0.4",
+    "contracts": "file:./truffle/build/contracts",
     "convert-source-map": "^1.9.0",
     "cookie": "^0.5.0",
     "cookie-signature": "^1.0.6",
