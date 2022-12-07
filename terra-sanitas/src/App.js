@@ -1,122 +1,144 @@
 import React from "react";
-import axios from 'axios';
-import {DeregisterUser, RequestInfo} from './Web3Client'
+import axios from "axios";
+import { DeregisterUser, RequestInfo } from "./Web3Client";
 import RegisterButton from "./components/Registerbutton";
 import DeregisterButton from "./components/DeregisterButton";
+import "./App.css";
 
-class App extends React.Component{
-
+class App extends React.Component {
   state = {
-    name: '',
-    body: '',
-    date:{},
-    list:[]
-}
+    name: "",
+    body: "",
+    date: {},
+    list: [],
+  };
 
-  list_button = async() =>{
-    this.getPatientList()
-    this.displayUserList()
-  }
-  test = () => {
-
-  }
-  authenicateRequest = () =>{
-      RequestInfo()
-      .then((tx)=>{
+  list_button = async () => {
+    this.getList();
+    this.displayUserList();
+  };
+  test = () => {};
+  authenicateRequest = () => {
+    RequestInfo()
+      .then((tx) => {
         console.log(tx);
       })
-      .catch((err)=>{
-          console.log(err);
+      .catch((err) => {
+        console.log(err);
       });
-
-  }
+  };
 
   getList = () => {
-    axios.get('/api')
-      .then((res)=>{
+    axios
+      .get("/api")
+      .then((res) => {
         console.log("Data has been received");
         const data = res.data;
-        this.setState({list:data})
+        this.setState({ list: data });
       })
-      .catch(()=>{
+      .catch(() => {
         console.log("Data has not been recieved");
-      })
-  }
-    handleChange = (event) =>{
+      });
+  };
+  handleChange = (event) => {
     const target = event.target;
     const name = target.name;
     const value = target.value;
-    this.setState( {
-        [name]:value
+    this.setState({
+      [name]: value,
+    });
+  };
+
+  submit = (event) => {
+    event.preventDefault();
+    const payload = {
+      name: this.state.name,
+      body: this.state.body,
+      date: new Date(Date.now()).toLocaleString(),
+    };
+    axios({
+      url: "/api/save",
+      method: "POST",
+      data: payload,
     })
-
-    }
-
-    submit = (event) => {
-      event.preventDefault();
-      const payload = {
-        name : this.state.name,
-        body : this.state.body,
-        date : Date.now()
-      };
-        axios({
-          url: '/api/save',
-          method: 'POST',
-          data: payload
-        }).then(()=>{
-          console.log('data has been sent to the server')
-          this.resetUserInputs();
-        }).catch(()=>{
-          console.log('Internal Server Error')
-        })
-      }
-
-    resetUserInputs = () => {
-      this.setState({
-        name: '',
-        body: ''
+      .then(() => {
+        console.log("data has been sent to the server");
+        this.resetUserInputs();
+      })
+      .catch(() => {
+        console.log("Internal Server Error");
       });
+  };
 
-    }
+  resetUserInputs = () => {
+    this.setState({
+      name: "",
+      body: "",
+    });
+  };
 
-    displayUserList = (posts) =>{
-      if(!posts.length) return null;
-      return posts.map((post,index)=>(
-        <div key = {index}>
-          <h3>{post.name}</h3>
-          <p>{post.body}</p>
-        </div>
-      ))
-    }
-    
-    
+  displayUserList = (posts) => {
+    if (!posts.length) return null;
+    return posts.map((post, index) => (
+      <tr>
+        <td>{post.name}</td>
+        <td>{post.date}</td>
+        <td>{post.body}</td>
+      </tr>
+    ));
+  };
 
-  render(){
-   return(
-    <div className = 'container'>
-      <RegisterButton />
-      <DeregisterButton />
-      <h2> Input Health Record</h2>
+  render() {
+    return (
+      <div className="container">
+        <RegisterButton />
+        <DeregisterButton />
+        <h2> Input Health Record</h2>
         <form>
-            <div className="form-group">
-                <input onChange={this.handleChange} name = 'name' type ='text' value={this.state.name} autoComplete="off" className = "form-control" placeholder="name"></input>
-            </div>
+          <div className="form-group">
+            <input
+              onChange={this.handleChange}
+              name="name"
+              type="text"
+              value={this.state.name}
+              autoComplete="off"
+              className="form-control"
+              placeholder="name"
+            ></input>
+          </div>
 
-            <div className = "form-group">
-                <textarea onChange = {this.handleChange} name = "body" value={this.state.body} autoComplete="off" className="form-control" placeholder="health information"></textarea>
-            </div>
+          <div className="form-group">
+            <textarea
+              onChange={this.handleChange}
+              name="body"
+              value={this.state.body}
+              autoComplete="off"
+              className="form-control"
+              placeholder="health information"
+            ></textarea>
+          </div>
 
-            <button onClick ={this.submit} className="btn btn-lg btn-info"> Add Patient Info</button>
+          <button onClick={this.submit} className="btn btn-lg btn-info">
+            {" "}
+            Add Patient Info
+          </button>
         </form>
 
         <div className="patientList">
-          <button onClick = {this.list_button}>Display User List</button>
+          <button onClick={this.list_button}>Display User List</button>
+          <br />
+          <table>
+            <tr>
+              <th>Name</th>
+              <th>Date</th>
+              <th>Description</th>
+            </tr>
             {this.displayUserList(this.state.list)}
+          </table>
         </div>
-    </div>
-   )
-  };
- 
+      </div>
+    );
+  }
 }
 
 export default App;
