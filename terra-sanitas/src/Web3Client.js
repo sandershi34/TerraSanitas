@@ -68,5 +68,4 @@ export const RequestInfo = async() =>{
         await init();
     }
     await tsContract.methods.request().send({from:selectedAccount})
-    app.getList();
 }

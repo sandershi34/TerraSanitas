@@ -14,14 +14,13 @@ class App extends React.Component {
   };
 
   list_button = async () => {
-    this.getList();
-    this.displayUserList();
+    this.authenicateRequest()
   };
-  test = () => {};
   authenicateRequest = () => {
     RequestInfo()
       .then((tx) => {
-        console.log(tx);
+        this.getList()
+        
       })
       .catch((err) => {
         console.log(err);
