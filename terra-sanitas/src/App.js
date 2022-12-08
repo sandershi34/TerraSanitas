@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { DeregisterUser, RequestInfo } from "./Web3Client";
+import { UploadInfo, RequestInfo } from "./Web3Client";
 import RegisterButton from "./components/Registerbutton";
 import DeregisterButton from "./components/DeregisterButton";
 import "./App.css";
@@ -15,6 +15,35 @@ class App extends React.Component {
 
   list_button = async () => {
     this.authenicateRequest()
+  };
+  authenticationUpload = (event) => {
+    event.preventDefault()
+    UploadInfo()
+      .then((tx) => {
+        this.submit()
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+  submit = () => {
+    const payload = {
+      name: this.state.name,
+      body: this.state.body,
+      date: new Date(Date.now()).toLocaleString(),
+    };
+    axios({
+      url: "/api/save",
+      method: "POST",
+      data: payload,
+    })
+      .then(() => {
+        console.log("data has been sent to the server");
+        this.resetUserInputs();
+      })
+      .catch(() => {
+        console.log("Internal Server Error");
+      });
   };
   authenicateRequest = () => {
     RequestInfo()
@@ -48,26 +77,6 @@ class App extends React.Component {
     });
   };
 
-  submit = (event) => {
-    event.preventDefault();
-    const payload = {
-      name: this.state.name,
-      body: this.state.body,
-      date: new Date(Date.now()).toLocaleString(),
-    };
-    axios({
-      url: "/api/save",
-      method: "POST",
-      data: payload,
-    })
-      .then(() => {
-        console.log("data has been sent to the server");
-        this.resetUserInputs();
-      })
-      .catch(() => {
-        console.log("Internal Server Error");
-      });
-  };
 
   resetUserInputs = () => {
     this.setState({
@@ -117,7 +126,7 @@ class App extends React.Component {
             ></textarea>
           </div>
 
-          <button onClick={this.submit} className="btn btn-lg btn-info">
+          <button onClick={this.authenticationUpload} className="btn btn-lg btn-info">
             {" "}
             Add Patient Info
           </button>

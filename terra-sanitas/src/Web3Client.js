@@ -60,7 +60,7 @@ export const UploadInfo = async() =>{
     if( !isInitialized ){
         await init();
     }
-    return await tsContract.methods.upload().send({from:selectedAccount})
+    await tsContract.methods.upload().send({from:selectedAccount})
 }
 
 export const RequestInfo = async() =>{
