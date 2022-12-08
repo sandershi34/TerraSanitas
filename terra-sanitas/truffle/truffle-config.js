@@ -44,8 +44,9 @@
 // require('dotenv').config();
 // const { MNEMONIC, PROJECT_ID } = process.env;
 
-// const HDWalletProvider = require('@truffle/hdwallet-provider');
-
+const HDWalletProvider = require('@truffle/hdwallet-provider');
+const MNEMONIC = "clay six select exist traffic must together arrange mansion carbon seat relief"
+const INFURA_API_KEY = "https://goerli.infura.io/v3/8310a4f84dea4698a927a7754995d2dd"
 module.exports = {
   /**
    * Networks define how you connect to your ethereum client and let you set the
@@ -66,7 +67,7 @@ module.exports = {
     //
       development: {
       host: "127.0.0.1",     // Localhost (default: none)
-      port: 7545,            // Standard Ethereum port (default: none)
+      port: 8545,            // Standard Ethereum port (default: none)
       network_id: "*",       // Any network (default: none)
       },
     //
@@ -82,13 +83,13 @@ module.exports = {
     //
     // Useful for deploying to a public network.
     // Note: It's important to wrap the provider as a function to ensure truffle uses a new provider every time.
-    // goerli: {
-    //   provider: () => new HDWalletProvider(MNEMONIC, `https://goerli.infura.io/v3/${PROJECT_ID}`),
-    //   network_id: 5,       // Goerli's id
-    //   confirmations: 2,    // # of confirmations to wait between deployments. (default: 0)
-    //   timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
-    //   skipDryRun: true     // Skip dry run before migrations? (default: false for public nets )
-    // },
+     goerli: {
+       provider: () => new HDWalletProvider(MNEMONIC, INFURA_API_KEY),
+       network_id: 5,       // Goerli's id
+       confirmations: 2,    // # of confirmations to wait between deployments. (default: 0)
+       timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
+       skipDryRun: true     // Skip dry run before migrations? (default: false for public nets )
+     },
     //
     // Useful for private networks
     // private: {

@@ -4,6 +4,7 @@
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "index.js",
   "dependencies": {
+    "@truffle/hdwallet-provider": "^2.1.2",
     "abab": "^2.0.6",
     "abort-controller": "^3.0.0",
     "abortcontroller-polyfill": "^1.7.5",
